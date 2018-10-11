@@ -1,2 +1,2 @@
 worker: botdiscord.js
-        puase
+pause
