@@ -1,1 +1,1 @@
-worker: botdiscord.js
+worker: node botdiscord.js
