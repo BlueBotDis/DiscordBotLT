@@ -1,2 +1,1 @@
 worker: botdiscord.js
-pause
