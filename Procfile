@@ -1,1 +1,2 @@
-worker: node botdiscord.js
+worker: botdiscord.js
+        puase
