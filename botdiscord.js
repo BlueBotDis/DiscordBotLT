@@ -1235,4 +1235,4 @@ client.on('message', message => {
    message.delete()
   }
  });
-client.login('NDk4NDczNDgwNTEwMTExNzc0.DqDEWA.VbtKgh1BBT41pujVXOQGU887JC8');
+client.login(process.env.bot_token);
