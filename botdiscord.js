@@ -658,7 +658,7 @@ client.on('message', async message => {
             text = co.first().content
 
               message.channel.send(`تم حفظ اقتراحك الرجاء انتضار الرد من قبل الاداره`)
-                client.channels.get("495359919529263116").send(`${message.author.username}'s sug => ${text}`)
+                client.channels.get("500350969767264256").send(`${message.author.username}'s sug => ${text}`)
 
               })
             }
