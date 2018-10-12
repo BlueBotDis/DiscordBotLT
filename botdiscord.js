@@ -1240,35 +1240,18 @@ client.on('message',async message => {
   }
 });
 
-
-client.on('message', function (message) {
-    var messageParts = message.content.split(' ');
-
-    var command = messageParts[0].toLowerCase();
-    var parameters = messageParts.splice(1, messageParts.length);
-
-
-    switch (command) {
-        case "-join":
-        if(message.guild.voiceConnection){
-            message.reply('I\'m Already In A Voice Connection!');
-        }else if(!message.member.voiceChannel){
-            message.reply('You\'re Not In A Voice Channel!');
-        }else{
-    let channel = message.member.voiceChannel;
-    channel.join();
+client.on("message", message => {
+    var prefix = "!"
+    if (!message.content.startsWith(prefix)) return;
+      let command = message.content.split(" ")[0];
+      command = command.slice(prefix.length);
+        if(command === "mcskin") {
+                const args = message.content.split(" ").slice(1).join(" ")
+        if (!args) return message.channel.send("**اكتب اسم سكنك. **");
+        const image = new Discord.Attachment(`https://visage.surgeplay.com/full/256/${args}`, "skin.png");
+    message.channel.send(image)
         }
-            break;
-case "-play":
-        if(!message.guild.voiceConnection){
-            message.reply('I\'m Not In A Voice Channel!');
-        }else{
-//كود بدء الموسيقى مالك
-        }
-            var voiceConnection = client.voiceConnections.first();
+    });
 
-            break;
-}
-});
 
 client.login(process.env.BOT_TOKEN);
