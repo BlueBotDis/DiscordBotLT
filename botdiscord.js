@@ -1,4 +1,4 @@
-const prefix ="&";
+const prefix ="!";
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
@@ -16,7 +16,7 @@ console.log("log");
 
 
  client.on('message', message => {
-    if (message.content.startsWith("&رابط")) {
+    if (message.content.startsWith("!رابط")) {
 
   message.channel.createInvite({
         thing: true,
@@ -68,7 +68,7 @@ if (msg.content.startsWith(prefix + 'cal')) {
  
 
 client.on('message', msg => {
-    if(msg.content.startsWith('&link')) {
+    if(msg.content.startsWith('!link')) {
     if(msg.channel.type === 'dm') return;
 const user = msg.mentions.users.first();
 if(!user) return msg.channel.send('``' + '**قم بتحديد بوت**' + '``')
@@ -101,7 +101,7 @@ m.sendMessage(args)
  
  client.on('message' , function (message){
       var token = 'NDk4NDczNDgwNTEwMTExNzc0.DqJToA.48AHExpgQkSWxkIb9b-welQGGJ'
-      if(message.content === '&restart') {
+      if(message.content === '!restart') {
 if(message.author.id !== '427855446225846272') return message.reply('**الامر خاص بـ صاحب البوت وشكرا**');
           client.destroy();
           client.login(token) // لا تغيرها
@@ -118,7 +118,7 @@ client.setInterval(function() {
 
 
 client.on('message', message => {
-    if(message.content == '&bans'){
+    if(message.content == '!bans'){
         message.guild.fetchBans().then(bans => {
             bans.forEach(user => {
                message.channel.send('\`#\` <@'+ user.id + '>');
@@ -302,7 +302,7 @@ if (ReBeLL.content.startsWith(prefix + `8ball`)) {
  
  
  client.on('message', message => {
-if(message.content.startsWith('&مستخدم') ) {
+if(message.content.startsWith('!مستخدم') ) {
      if(!message.channel.guild) return message.reply('** This command only for servers **')
           var args = message.content.split(" ").slice(1);
     let sent = 0
@@ -323,7 +323,7 @@ client.users.filter(u => u.discriminator == args[0]).forEach(u => {
 })
 }
 }
-if(message.content ===('&مستخدم') ) {
+if(message.content ===('!مستخدم') ) {
      if(!message.channel.guild) return message.reply('** This command only for servers **')
   let sent = 0
     let count = 1;
@@ -431,7 +431,7 @@ let streaming = [`${prefix}help !!`, `LEGEND TIME BOT`];
 client.user.setActivity(streaming[Math.floor(Math.random() * streaming.length)], {type: 1, url: "https://twitch.tv/6xlez1"});
 setInterval(() => {
 client.user.setActivity(streaming[Math.floor(Math.random() * streaming.length)], {type: 1, url: "https://twitch.tv/6xlez1"});
-}, 60000);
+}, 15000);
 });
  
  
@@ -445,7 +445,7 @@ client.user.setActivity(streaming[Math.floor(Math.random() * streaming.length)],
  
  
 client.on("message", message => {
-    var prefix = "&"; // غير هنا حط البرفكس
+    var prefix = "!"; // غير هنا حط البرفكس
  
             var args = message.content.substring(prefix.length).split(" ");
             if (message.content.startsWith(prefix + "مسح")) {
@@ -471,7 +471,7 @@ client.on("message", message => {
  
 
 client.on('message', message => {
-      if(message.content.startsWith ("&زواج")) {
+      if(message.content.startsWith ("!marr")) {
       if(!message.channel.guild) return message.reply('** This command only for servers **')
       var proposed = message.mentions.members.first()
      
@@ -594,32 +594,53 @@ client.on('message', message => {
 
  ╱╭╮╭╮╱╱╱╱╭╮╭━╮╱╱╱╱╱╱╭━━╮╱╱╱
 ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ 
-اوامر البوت
+                                 **اوامر البوت**
 ❖اوامر عامه
 
 ❖!link  
-  لاخذ رابط اي بوت 
-❖!رابط 
-  لاخذ رابط السيرفر
+
+لاخذ رابط اي بوت
+
+❖!رابط
+
+لاخذ رابط السيرفر
+
 ❖!invites
-  لمعرفة كم دعوت شخص
+ 
+لمعرفة كم دعوت شخص
+
 ❖!server  
-  لمعرفت معلومات السيرفر
+  
+لمعرفت معلومات السيرفر
+
 ❖!bans  
-  يعطيك تاقات الي تبندو ورا بعض
+  
+يعطيك تاقات الي تبندو ورا بعض
 تحت الصيانة 
-❖!مسح
+
+❖!delt
+
   لمسح الشات 
-❖!اقتراح
-  وكتب اقتراحك وسوف يصل الاداره               
-❖!move                                        
-  لسحب جميع الاعضاء الذين في الرومات لعندك
+
+❖!sug
+
+  وكتب اقتراحك وسوف يصل الاداره   
+
+❖!move 
+
+لسحب جميع الاعضاء الذين في الرومات لعندك
+
 ❖!ebla3
+
 لعبة
 تحت الصيانة
+
 ❖!rps
+
 حجرة ورقة مقص
+
 !8ball❖
+
 لعبة
 ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕
 ╱╭╮╭╮╱╱╱╱╭╮╭━╮╱╱╱╱╱╱╭━━╮╱╱╱
@@ -760,7 +781,7 @@ var mentionned = message.mentions.members.first();
  
  client.on('message', message => {
   
-    if(message.content.split(' ')[0] == '&owner'){
+    if(message.content.split(' ')[0] == '!owner'){
          if(!message.channel.guild) return;
                             let args = message.content.split(' ').slice(1).join(' ');
     
@@ -878,7 +899,7 @@ client.on('message', message => {
  
 
 client.on('message', message => { 
-let PREFIX = '&'
+let PREFIX = '!'
     if (message.content.startsWith(PREFIX + 'emojilist')) {
 
         const List = message.guild.emojis.map(e => e.toString()).join(" ");
@@ -987,7 +1008,7 @@ message.channel.send(`${user} has ${inviteCount} invites.`);
  
 
 client.on('message',  (message) => {
-        if(message.content.startsWith('ebla3')) {
+        if(message.content.startsWith('!ebla3')) {
   let user = message.mentions.users.first();
   if (!user) {
 
@@ -1043,7 +1064,7 @@ message.channel.send(`let args = message.content.split(" ").slice(${args}).join(
  
  
 client.on('message', ra3d => {
-var prefix = "&";
+var prefix = "!";
                         let args = ra3d.content.split(" ").slice(1).join(" ")
 if(ra3d.content.startsWith(prefix + 'cc')) {
     if(!args) return ra3d.channel.send('`يرجي اختيار كم لون `');
@@ -1242,11 +1263,30 @@ client.on('message', message => {
 
 
 client.on("message", message => {
-      if (message.content === "&ping") {
+      if (message.content === "!ping") {
       const embed = new Discord.RichEmbed()
   .setColor("RANDOM")
   .addField('**Ping:**' , `${Date.now() - message.createdTimestamp}` + ' ms')
   message.channel.sendEmbed(embed);
     }
+});
+
+
+client.on('message',async message => {
+  let channel;
+  let author;
+  if(message.author.id === author) {
+    hero.channels.get(channel).send(`${message.author} **::** ${message.content}`);
+  }
+  if(message.content === `${prefix}msg`) {
+    let mention = message.mentions.users.first();
+    if(!mention) return message.channel.send('- **منشن العضو**');
+    if(!args[2]) return message.channel.send('- **اكتب رسالتك**');
+
+    channel = message.channel;
+    author = mention.id;
+    mention.send(args.slice(2).join(' ')).catch(e => message.channel.send(`- **${e.message}**`));
+    message.channel.send(`${message.author} **::** ${args.slice(2).join(' ')}`);
+  }
 });
 client.login(process.env.BOT_TOKEN);
