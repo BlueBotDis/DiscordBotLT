@@ -1222,36 +1222,34 @@ client.on("message", message => {
 });
 
 
-client.on('message',async message => {
-  let channel;
-  let author;
-  if(message.author.id === author) {
-    hero.channels.get(channel).send(`${message.author} **::** ${message.content}`);
-  }
-  if(message.content === `${prefix}msg`) {
-    let mention = message.mentions.users.first();
-    if(!mention) return message.channel.send('- **منشن العضو**');
-    if(!args[2]) return message.channel.send('- **اكتب رسالتك**');
+client.on('message', message => {
+    if(!message.channel.guild) return;
+    if (message.author.bot) return;
 
-    channel = message.channel;
-    author = mention.id;
-    mention.send(args.slice(2).join(' ')).catch(e => message.channel.send(`- **${e.message}**`));
-    message.channel.send(`${message.author} **::** ${args.slice(2).join(' ')}`);
+    if(!message.member.hasPermission('ADMINISTRATOR')) return;
+  
+  if (message.content.startsWith('$send-dm')) {
+
+    var mentionned = message.mentions.users.first();
+    let args = message.content.split(" ").slice(1);
+
+    var codes;
+    if(mentionned){
+        var codes = mentionned;
+      
+    } else {
+      return message.channel.send("**فشل**");
+        
+    }
+
+
+  let say = new Discord.RichEmbed()
+  .setDescription(args.join("  "))
+  .setFooter('Sent by : ' + `${message.author.tag}`)
+  .setColor('#009efc')
+  client.users.get(mentionned.id).sendEmbed(say);
+  
   }
 });
-
-client.on("message", message => {
-    var prefix = "!"
-    if (!message.content.startsWith(prefix)) return;
-      let command = message.content.split(" ")[0];
-      command = command.slice(prefix.length);
-        if(command === "mcskin") {
-                const args = message.content.split(" ").slice(1).join(" ")
-        if (!args) return message.channel.send("**اكتب اسم سكنك. **");
-        const image = new Discord.Attachment(`https://visage.surgeplay.com/full/256/${args}`, "skin.png");
-    message.channel.send(image)
-        }
-    });
-
 
 client.login(process.env.BOT_TOKEN);
