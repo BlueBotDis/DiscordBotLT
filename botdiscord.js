@@ -1,4 +1,4 @@
-const prefix ="!";
+const prefix ="&";
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
@@ -16,7 +16,7 @@ console.log("log");
 
 
  client.on('message', message => {
-    if (message.content.startsWith("!رابط")) {
+    if (message.content.startsWith("&رابط")) {
 
   message.channel.createInvite({
         thing: true,
@@ -68,7 +68,7 @@ if (msg.content.startsWith(prefix + 'cal')) {
  
 
 client.on('message', msg => {
-    if(msg.content.startsWith('!link')) {
+    if(msg.content.startsWith('&link')) {
     if(msg.channel.type === 'dm') return;
 const user = msg.mentions.users.first();
 if(!user) return msg.channel.send('``' + '**قم بتحديد بوت**' + '``')
@@ -84,7 +84,7 @@ msg.channel.send(`**Bot InviteURL : ** https://discordapp.com/oauth2/authorize?c
 client.on('message', message => {
             if(!message.channel.guild) return;
 let args = message.content.split(' ').slice(1).join(' ');
-if (message.content.startsWith('!bcall')){
+if (message.content.startsWith('&bcall')){
  if (message.author.id !== '427855446225846272') return message.reply('** هذا الأمر قفط لصاحب البوت و شكراًً **')
  if(!message.author.id === '427855446225846272') return;
 message.channel.sendMessage('جار ارسال الرسالة |✅')
@@ -101,7 +101,7 @@ m.sendMessage(args)
  
  client.on('message' , function (message){
       var token = 'NDk4NDczNDgwNTEwMTExNzc0.DqJToA.48AHExpgQkSWxkIb9b-welQGGJ'
-      if(message.content === '!restart') {
+      if(message.content === '&restart') {
 if(message.author.id !== '427855446225846272') return message.reply('**الامر خاص بـ صاحب البوت وشكرا**');
           client.destroy();
           client.login(token) // لا تغيرها
@@ -118,7 +118,7 @@ client.setInterval(function() {
 
 
 client.on('message', message => {
-    if(message.content == '!bans'){
+    if(message.content == '&bans'){
         message.guild.fetchBans().then(bans => {
             bans.forEach(user => {
                message.channel.send('\`#\` <@'+ user.id + '>');
@@ -136,7 +136,7 @@ client.on('message', message => {
   client.on('message', async message => {
 if(message.author.bot) return;
 if (message.channel.guild) {
-if (message.content.startsWith(prefix + `!cat`)) {
+if (message.content.startsWith(prefix + `cat`)) {
             const { body } = await snekfetch.get("http://aws.random.cat/meow");
             return message.channel.send({ file: body.file });
 }}});
@@ -302,7 +302,7 @@ if (ReBeLL.content.startsWith(prefix + `8ball`)) {
  
  
  client.on('message', message => {
-if(message.content.startsWith('!مستخدم') ) {
+if(message.content.startsWith('&مستخدم') ) {
      if(!message.channel.guild) return message.reply('** This command only for servers **')
           var args = message.content.split(" ").slice(1);
     let sent = 0
@@ -323,7 +323,7 @@ client.users.filter(u => u.discriminator == args[0]).forEach(u => {
 })
 }
 }
-if(message.content ===('!مستخدم') ) {
+if(message.content ===('&مستخدم') ) {
      if(!message.channel.guild) return message.reply('** This command only for servers **')
   let sent = 0
     let count = 1;
@@ -426,9 +426,12 @@ client.on('message',async message => {
  
  
  
-client.on('ready', () => { //playing
-    client.user.setGame(`LEGEND TIME BOT	`,'https://www.twitch.tv/ytKarZoYT');
-    client.user.setStatus('Online')
+client.on('ready',async () => {
+let streaming = [`${prefix}help !!`, `LEGEND TIME BOT`];
+client.user.setActivity(streaming[Math.floor(Math.random() * streaming.length)], {type: 1, url: "https://twitch.tv/6xlez1"});
+setInterval(() => {
+client.user.setActivity(streaming[Math.floor(Math.random() * streaming.length)], {type: 1, url: "https://twitch.tv/6xlez1"});
+}, 60000);
 });
  
  
@@ -442,7 +445,7 @@ client.on('ready', () => { //playing
  
  
 client.on("message", message => {
-    var prefix = "!"; // غير هنا حط البرفكس
+    var prefix = "&"; // غير هنا حط البرفكس
  
             var args = message.content.substring(prefix.length).split(" ");
             if (message.content.startsWith(prefix + "مسح")) {
@@ -468,7 +471,7 @@ client.on("message", message => {
  
 
 client.on('message', message => {
-      if(message.content.startsWith ("!زواج")) {
+      if(message.content.startsWith ("&زواج")) {
       if(!message.channel.guild) return message.reply('** This command only for servers **')
       var proposed = message.mentions.members.first()
      
@@ -649,7 +652,7 @@ if(!ReBeL.voiceChannel) {
  
  
 client.on('message', async message => {
-  if(message.content.startsWith(prefix + "اقتراح")) {
+  if(message.content.startsWith(prefix + "sug")) {
   await  message.channel.send(`اكتب اقتراحك الان`)
     let filter = m => m.author.id === message.author.id
       var text = '';
@@ -757,7 +760,7 @@ var mentionned = message.mentions.members.first();
  
  client.on('message', message => {
   
-    if(message.content.split(' ')[0] == '!owner'){
+    if(message.content.split(' ')[0] == '&owner'){
          if(!message.channel.guild) return;
                             let args = message.content.split(' ').slice(1).join(' ');
     
@@ -875,7 +878,7 @@ client.on('message', message => {
  
 
 client.on('message', message => { 
-let PREFIX = '!'
+let PREFIX = '&'
     if (message.content.startsWith(PREFIX + 'emojilist')) {
 
         const List = message.guild.emojis.map(e => e.toString()).join(" ");
@@ -966,7 +969,7 @@ client.on('message',function(message) {
  
  
 client.on('message', message => {
-   if(message.content.startsWith(prefix + "كم")) {
+   if(message.content.startsWith(prefix + "inv")) {
     message.guild.fetchInvites().then(invs => {
       let user = message.mentions.users.first() || message.author
       let personalInvites = invs.filter(i => i.inviter.id === user.id);
@@ -1040,7 +1043,7 @@ message.channel.send(`let args = message.content.split(" ").slice(${args}).join(
  
  
 client.on('message', ra3d => {
-var prefix = "!";
+var prefix = "&";
                         let args = ra3d.content.split(" ").slice(1).join(" ")
 if(ra3d.content.startsWith(prefix + 'cc')) {
     if(!args) return ra3d.channel.send('`يرجي اختيار كم لون `');
@@ -1230,7 +1233,7 @@ client.on('message', message => {
 
   let args = message.content.split(" ").slice(1);
 
-  if (command == "!say") {
+  if (command == "&say") {
    message.channel.sendMessage(args.join("  "))
    message.delete()
   }
@@ -1239,7 +1242,7 @@ client.on('message', message => {
 
 
 client.on("message", message => {
-      if (message.content === "!ping") {
+      if (message.content === "&ping") {
       const embed = new Discord.RichEmbed()
   .setColor("RANDOM")
   .addField('**Ping:**' , `${Date.now() - message.createdTimestamp}` + ' ms')
