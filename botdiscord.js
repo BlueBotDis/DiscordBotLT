@@ -28,7 +28,7 @@ console.log("log");
   message.channel.send("**تم ارسال الرابط **")
 
 message.author.send(`**مدة الرابط : يـوم
-عدد استخدامات الرابط : 2**`)
+عدد **`)
 
 
     }
@@ -100,7 +100,7 @@ m.sendMessage(args)
  
  
  client.on('message' , function (message){
-      var token = 'توكن بوتك'; // التوكن هنا بس
+      var token = 'NDk4NDczNDgwNTEwMTExNzc0.DqJToA.48AHExpgQkSWxkIb9b-welQGGJ'
       if(message.content === '!restart') {
 if(message.author.id !== '427855446225846272') return message.reply('**الامر خاص بـ صاحب البوت وشكرا**');
           client.destroy();
@@ -1235,4 +1235,15 @@ client.on('message', message => {
    message.delete()
   }
  });
+
+
+
+client.on("message", message => {
+      if (message.content === "!ping") {
+      const embed = new Discord.RichEmbed()
+  .setColor("RANDOM")
+  .addField('**Ping:**' , `${Date.now() - message.createdTimestamp}` + ' ms')
+  message.channel.sendEmbed(embed);
+    }
+});
 client.login(process.env.BOT_TOKEN);
