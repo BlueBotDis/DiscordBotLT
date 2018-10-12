@@ -427,11 +427,11 @@ client.on('message',async message => {
  
  
 client.on('ready',async () => {
-let streaming = [`${prefix}help !!`, `LEGEND TIME BOT`];
+let streaming = [`${prefix}help `, `Legend Bot 💚 `];
 client.user.setActivity(streaming[Math.floor(Math.random() * streaming.length)], {type: 1, url: "https://twitch.tv/6xlez1"});
 setInterval(() => {
 client.user.setActivity(streaming[Math.floor(Math.random() * streaming.length)], {type: 1, url: "https://twitch.tv/6xlez1"});
-}, 15000);
+}, 5000);
 });
  
  
@@ -448,7 +448,7 @@ client.on("message", message => {
     var prefix = "!"; // غير هنا حط البرفكس
  
             var args = message.content.substring(prefix.length).split(" ");
-            if (message.content.startsWith(prefix + "مسح")) {
+            if (message.content.startsWith(prefix + "delt")) {
    if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('⚠ | **ليس لديك صلاحيات**');
         var msg;
         msg = parseInt();
