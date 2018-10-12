@@ -427,7 +427,7 @@ client.on('message',async message => {
  
  
 client.on('ready',async () => {
-let streaming = [`${prefix}help `, `Legend Bot 💚 `];
+let streaming = [`${prefix}help💙💚 `, `Legend Bot 💚💙 `];
 client.user.setActivity(streaming[Math.floor(Math.random() * streaming.length)], {type: 1, url: "https://twitch.tv/6xlez1"});
 setInterval(() => {
 client.user.setActivity(streaming[Math.floor(Math.random() * streaming.length)], {type: 1, url: "https://twitch.tv/6xlez1"});
@@ -448,7 +448,7 @@ client.on("message", message => {
     var prefix = "!"; // غير هنا حط البرفكس
  
             var args = message.content.substring(prefix.length).split(" ");
-            if (message.content.startsWith(prefix + "delt")) {
+            if (message.content.startsWith(prefix + "clean")) {
    if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('⚠ | **ليس لديك صلاحيات**');
         var msg;
         msg = parseInt();
@@ -618,7 +618,7 @@ client.on('message', message => {
 يعطيك تاقات الي تبندو ورا بعض
 تحت الصيانة 
 
-❖!delt
+❖!clean
 
   لمسح الشات 
 
@@ -642,6 +642,10 @@ client.on('message', message => {
 !8ball❖
 
 لعبة
+
+❖!marr
+
+لعبة الزواج :
 ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕
 ╱╭╮╭╮╱╱╱╱╭╮╭━╮╱╱╱╱╱╱╭━━╮╱╱╱
 
@@ -1289,4 +1293,7 @@ client.on('message',async message => {
     message.channel.send(`${message.author} **::** ${args.slice(2).join(' ')}`);
   }
 });
+
+
+
 client.login(process.env.BOT_TOKEN);
