@@ -1269,7 +1269,7 @@ client.on('guildMemberAdd', member => {
                       
                                      .addField(' الـسيرفر', `${member.guild.name}`,true)
                                        
-     .setFooter("**SERVER NAME **")
+     .setFooter("LGEGND TIME :L")
         .setTimestamp()
     
       channel.sendEmbed(embed);
