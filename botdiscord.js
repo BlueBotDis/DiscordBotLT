@@ -1511,4 +1511,19 @@ client.on('message', message => {
         message.channel.send({embed})
     }
 });
+
+client.on('message', message => {
+  if(message.content.startsWith("#credit <@الايدي حقك هنا>","#credits <@الايدي حقك هنا>")) {
+    let role = message.guild.roles.find("name", "Donatour");
+    if(!role) {
+      return message.channel.send('Thanks for your support. ❤');
+    }
+      message.member.addRole(role);
+      let embed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setAuthor("Thanks for you support you have given the Donatour role.");
+
+        message.author.sendEmbed(embed);
+  }
+});
 client.login(process.env.BOT_TOKEN);
