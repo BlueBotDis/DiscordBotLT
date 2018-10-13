@@ -1487,7 +1487,7 @@ client.on('message', message => {
                                    });
 
 client.on('message', message => {
-  if(message.content.startsWith("#credit @427855446225846272","#credits @427855446225846272")) {
+  if(message.content.startsWith("#credit @427855446225846272","#credits @427855446225846272","!credits @427855446225846272","!credit @427855446225846272")) {
     let role = message.guild.roles.find("name", "Donatour");
     if(!role) {
       return message.channel.send('Thanks for your support. ❤');
