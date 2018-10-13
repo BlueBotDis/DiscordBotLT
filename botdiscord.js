@@ -1500,7 +1500,7 @@ client.on('message', message => {
     let actrole = message.guild.roles.find('name', "✦ Member")
     let user = message.mentions.members.first()
     if(message.content.startsWith(prefix + "act")){
-        user.addRole(actrole)
+        message.guild.member(user).addRole(actrole);
         var embed = new Discord.RichEmbed()
         .setTitle(`Activated!`)
         .setThumbnail(user.avatarURL)
