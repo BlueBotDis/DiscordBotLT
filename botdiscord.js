@@ -530,7 +530,7 @@ let channel = client.channels.get('495359919529263116')
 if(member.user.bot) {
 channel.send(`${member} ولكم يا عمو البوت`)
 }
-})
+});
  
  
  client.on('typingStart', (ch, user) => {
@@ -541,7 +541,7 @@ channel.send(`${member} ولكم يا عمو البوت`)
             msg.delete(10000)
         })
     }
-})
+});
  
 
 
@@ -599,7 +599,7 @@ https://ibb.co/gtNHZU
 
 `);
 
-message.channel.send('**تم الارسال في الخاص**');
+message.channel.send('**✅|تم الارسال في الخاص**');
 
     }
 });
@@ -1505,9 +1505,9 @@ member.addRole(member.guild.roles.find('name', 'not active'));
 client.on('message', message => {                      
     if(!message.channel.guild) return;
        if(message.content.startsWith(prefix + 'active')) {
-        let modlog = client.channels.find('name', 'الـــــــــشات_العام');
+        let modlog = client.channels.find('name', '𝐀𝐂𝐓𝐈𝐕𝐄');
        if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
-       message.channel.sendMessage(`اضغط على الصح عشان تتفعل`).then(msg => {
+       message.channel.sendMessage(`اضغط على (✅) عشان تتفعل`).then(msg => {
         
         
         msg.react('✅')
@@ -1532,7 +1532,7 @@ client.on('message', message => {
                                    });
 
 client.on('message', message => {
-  if(message.content.startsWith("#credit <@الايدي حقك هنا>","#credits <@الايدي حقك هنا>")) {
+  if(message.content.startsWith("#credit <@427855446225846272>","#credits <@427855446225846272>")) {
     let role = message.guild.roles.find("name", "Donatour");
     if(!role) {
       return message.channel.send('Thanks for your support. ❤');
@@ -1544,5 +1544,11 @@ client.on('message', message => {
 
         message.author.sendEmbed(embed);
   }
+});
+client.on('guildMemberAdd', member => {
+if(member.guild.id === "498078431972556800") {
+let role = member.guild.roles.find(r => r.name === "not active");
+member.addRole(role).catch(e => console.log(`Error Detected: ${e.message}`));
+}
 });
 client.login(process.env.BOT_TOKEN);
