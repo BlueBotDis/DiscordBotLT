@@ -1487,22 +1487,7 @@ client.on('message', message => {
     }
        
 });
-
-client.on('guildMemberAdd', member => {
-    let new1 = member.guild.roles.find('name', "✦ Not Activated")
-    let staff = member.guild.channels.find('name', "staff-chat")
-    let staff1 = member.guild.roles.find('name', "✦ Discord Staff ")
-    member.sendMessage(`Please Wait For Activate`)
-    staff.send(`**There are a new member ${member} waiting for activation ${staff1}**`)
-    member.addRole(new1)
-});
  
- 
-
-client.on('guildMemberAdd', (member) => {
-member.addRole(member.guild.roles.find('name', 'not active'));
-});
-
 
 client.on('message', message => {                      
     if(!message.channel.guild) return;
@@ -1523,7 +1508,7 @@ client.on('message', message => {
      
                                                         
                                active.on("collect", r => {
-                                   message.member.addRole(message.guild.roles.find("name", "active"));
+                                   message.member.addRole(message.guild.roles.find("name", "Member"));
                                    message.member.removeRole(message.guild.roles.find("name", "not active"));
                                    msg.delete();
                                    message.channel.send(`**تم تفعيلك استمتع.**`).then(m => m.delete(1000));
