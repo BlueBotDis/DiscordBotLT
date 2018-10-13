@@ -1507,13 +1507,12 @@ member.addRole(role).catch(e => console.log(`Error Detected: ${e.message}`));
 }
 });
 
-hero.on('message',async message => {
+client.on('message',async message => {
   if(message.author.bot) return;
   if(message.channel.type === 'dm') return;
  
   const args = message.content.split(' ');
-  const credits = require('./credits.json');
-  const path = './credits.json';
+  const credits = {};
   const mention = message.mentions.users.first() || hero.users.get(args[1]) || message.author;
   const mentionn = message.mentions.users.first() || hero.users.get(args[1]);
   const author = message.author.id;
@@ -1522,7 +1521,7 @@ hero.on('message',async message => {
  
   if(!credits[author]) credits[author] = {credits: 50};
   if(!credits[mention.id]) credits[mention.id] = {credits: 50};
-  fs.writeFile(path, JSON.stringify(credits, null, 5), function(err) {if(err) console.log(err)});
+ 
  
  
   if(message.content.startsWith(prefix + "credit")) {
@@ -1547,7 +1546,7 @@ hero.on('message',async message => {
           message.channel.send(`**:atm:| ${message.author.username}, قام بتحويل \`${balance}\` لـ ${mention}**`);
           credits[author].credits += (-balance);
           credits[mention.id].credits += (+balance);
-          fs.writeFile(path, JSON.stringify(credits, null, 5), function(err) {if(err) console.log(err)});
+         
         } else if(c.first().content !== number) {
           m.delete();
           message.channel.send(`** :money_with_wings: | تم الغاء الإرسال**`);
@@ -1577,7 +1576,7 @@ hero.on('message',async message => {
             m.delete();
             collected.first().delete();
             credits[mentionn.id].credits += (+daily);
-            fs.writeFile(path, JSON.stringify(credits, null, 5), function(err) {if(err) console.log(err)});
+           
  
           message.channel.send(`**:atm: | \`${daily}\`, تم تسليم المبلغ**`);  
           }
@@ -1588,7 +1587,7 @@ hero.on('message',async message => {
       });
     } else if(!mentionn) {
       credits[author].credits += (+daily);
-      fs.writeFile(path, JSON.stringify(credits, null, 5), function(err) {if(err) console.log(err)});
+     
  
       message.channel.send(`**:atm: | \`${daily}\`, تم اعطائك المبلغ**`);
     }
