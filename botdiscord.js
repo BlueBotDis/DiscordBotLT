@@ -1433,39 +1433,6 @@ client.on('ebnklb',function(ebnklb) {
     }
 });
 
-    client.on('guildMemberRemove', member => {
-        var embed = new Discord.RichEmbed()
-        .setAuthor(member.user.username, member.user.avatarURL)
-        .setThumbnail(member.user.avatarURL)
-        .setTitle(`بس بعرف وين رحت؟؟؟ :raised_hand::skin-tone-1: :pensive:`)
-        .setDescription(`مع السلامه تشرفنا بك :raised_hand::skin-tone-1: :pensive: `)
-        .addField('👤   تبقي',`**[ ${member.guild.memberCount} ]**`,true)
-        .setColor('RED')
-        .setFooter(`====ولكم منور السيرفر اتمنا لك الاستمتاع====`, 'https://cdn.discordapp.com/attachments/397818254439219217/399292026782351381/shy.png')
-    
-    var channel =member.guild.channels.find('name', 'welcome')
-    if (!channel) return;
-    channel.send({embed : embed});
-
-hero.on('message', message => {
-  if(message.author.bot) return;
-  if(message.channel.type === 'dm') return;
-    if(message.content.toLowerCase().startsWith(prefix + "uptime")) {
-      let upTime = process.uptime();
-  
-      let days = Math.floor(upTime / 86400);
-      upTime %= 86400;
-  
-      let hrs = Math.floor(upTime / 3600);
-      upTime %= 3600;
-  
-      let min = Math.floor(upTime / 60);
-      let sec = Math.floor(upTime % 60);
-  
-      message.channel.send(`\`${days} days, ${hrs} hrs, ${min} min, ${sec} sec\``);
-    }
-});
-
 client.on('message',function(message) {
     let messageArray = message.content.split(' ');
     let muteRole = message.guild.roles.get('اي دي الرتبة') || message.guild.roles.find('name', 'Muted');
