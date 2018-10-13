@@ -1435,7 +1435,7 @@ client.on('ebnklb',function(ebnklb) {
 
 client.on('message',function(message) {
     let messageArray = message.content.split(' ');
-    let muteRole = message.guild.roles.get('اي دي الرتبة') || message.guild.roles.find('name', 'Muted');
+    let muteRole = message.guild.roles.get('&500696632812371978') || message.guild.roles.find('name', 'Muted');
     let muteMember = message.mentions.members.first();
     let muteReason = messageArray[2];
     let muteDuration = messageArray[3];
@@ -1460,7 +1460,7 @@ client.on('message',function(message) {
 
 
 client.on('message', message => {
-       if(message.content === prefix + "Close") {
+       if(message.content === prefix + "close") {
                            if(!message.channel.guild) return message.reply('** This command only for servers**');
 
    if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__ليس لديك صلاحيات__**');
@@ -1472,7 +1472,7 @@ client.on('message', message => {
               });
                 }
 
-    if(message.content === prefix + "Open") {
+    if(message.content === prefix + "open") {
                         if(!message.channel.guild) return message.reply('** This command only for servers**');
 
    if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**__ليس لديك صلاحيات__**');
