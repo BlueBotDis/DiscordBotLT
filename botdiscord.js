@@ -427,7 +427,7 @@ client.on('message',async message => {
  
  
 client.on('ready',async () => {
-let streaming = [`${prefix}help💙💚 `, `Legend Bot 💚💙 `, `Bot: 0.1 Beta💚💙` , `!رابط link support server`];
+let streaming = [`${prefix}help💙💚 `, `Legend Bot 💚💙 `, `Bot: 0.1 Beta💚💙` , `By KarZo`];
 client.user.setActivity(streaming[Math.floor(Math.random() * streaming.length)], {type: 1, url: "https://twitch.tv/6xlez1"});
 setInterval(() => {
 client.user.setActivity(streaming[Math.floor(Math.random() * streaming.length)], {type: 1, url: "https://twitch.tv/6xlez1"});
