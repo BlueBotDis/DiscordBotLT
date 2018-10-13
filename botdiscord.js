@@ -1399,4 +1399,14 @@ cc.on("collect", r => {
      }
      });
 
+
+client.on("message",async message => {
+if (message.author.bot || message.channel.type === 'dm') return;
+if (message.content === prefix + "say") {
+let args = message.content.split(' ').slice(1);
+if(!args[0]) return message.channel.send("MESSAGE IS REQUIRED");
+message.channel.send(args.join(" "));
+}
+});
+
 client.login(process.env.BOT_TOKEN);
