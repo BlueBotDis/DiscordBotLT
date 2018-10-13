@@ -525,10 +525,12 @@ message.channel.awaitMessages(filte, { max: 1, time: 15000, errors: ['time'] })
  
  
  
- client.on('guildMemberAdd', (member) => {
-let channel = client.channels.get('495359919529263116')
+client.on('guildMemberAdd', (member) => {
+if(member.guild.id === "498078431972556800") {
+let channel = client.channels.get('499953229082132492')
 if(member.user.bot) {
 channel.send(`${member} ولكم يا عمو البوت`)
+}
 }
 });
  
