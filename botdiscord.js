@@ -427,7 +427,7 @@ client.on('message',async message => {
  
  
 client.on('ready',async () => {
-let streaming = [`${prefix}help💙💚 `, `Legend Bot 💚💙 `, `Bot: 0.1 Beta💚💙` , `By KarZo`];
+let streaming = [`${prefix}help💙💚 `, `Legend Bot 💚💙 `, `Bot: 0.5 Beta💚💙` , `LegendTime Team💙💚`];
 client.user.setActivity(streaming[Math.floor(Math.random() * streaming.length)], {type: 1, url: "https://twitch.tv/6xlez1"});
 setInterval(() => {
 client.user.setActivity(streaming[Math.floor(Math.random() * streaming.length)], {type: 1, url: "https://twitch.tv/6xlez1"});
@@ -567,7 +567,7 @@ client.on('message', message => {
                let mmmmEmbed = new Discord.RichEmbed()
                          .setAuthor(client.user.username)
                          .setThumbnail(message.author.avatarURL)
- .addField(` لقد قمت بدعوة :`, ` ${inviteCount} `)
+channel.send(تم دعوته بواسطة  ${Invite.inviter}) ;
            .setFooter(`- Requested By: ${message.author.tag}`);
            message.channel.send(mmmmEmbed)
 });
@@ -731,21 +731,7 @@ var mentionned = message.mentions.members.first();
      });
  
  
- client.on('message', message => {
-  
-    if(message.content.split(' ')[0] == '!owner'){
-         if(!message.channel.guild) return;
-                            let args = message.content.split(' ').slice(1).join(' ');
-    
-    client.guilds.get("498473480510111774").members.get("427855446225846272").sendMessage(message.author.tag+"\n Message : "+args)
-    
-                                                    let embed = new Discord.RichEmbed()
-                                                    .setAuthor(message.author.username, message.author.avatarURL)
-                                                    .setDescription('📬 تم ارسال صاحب البوت بنجاح')
-                                                    .setThumbnail(message.author.avatarURL)
-                                                    .setFooter(message.author.username, message.author.avatarURL)
-                                                    message.channel.sendEmbed(embed);}
-                                                  });
+
  
  
  
@@ -817,7 +803,7 @@ client.on('message',function(message) {
  const embed = new Discord.RichEmbed()
 
     .setDescription(`**Members info ✨
-💚 onlin{message.guild.members.filter(m=>m.presence.status == 'online').size}
+💚 online     ${message.guild.members.filter(m=>m.presence.status == 'online').size}
 ❤  dnd:       ${message.guild.members.filter(m=>m.presence.status == 'dnd').size}
 💛  idle:     ${message.guild.members.filter(m=>m.presence.status == 'idle').size}
 💠   membersCount:  ${message.guild.memberCount - message.guild.members.filter(m=>m.user.bot).size}
@@ -1046,7 +1032,7 @@ if(ra3d.content.startsWith(prefix + 'cc')) {
     minutes = minutes > 9 ? minutes : '0' + minutes
     seconds = seconds > 9 ? seconds : '0' + seconds
     return `${days > 0 ? `${days}:` : ''}${(hours || days) > 0 ? `${hours}:` : ''}${minutes}:${seconds}`
-}
+});
 
  
  
@@ -1139,9 +1125,9 @@ client.on('ready',async () => {
   let cBots = guild.channels.get("499932679504920586"); // Bots
 
   setInterval(() => {
-    cUsers.setName(`Users : ${client.users.size}`);
-    cMembers.setName(`Members : ${guild.memberCount}`);
-    cBots.setName(`Bots : ${guild.members.filter(r => r.user.bot).size}`);
+    cUsers.setName(`Users 🗿 : ${client.users.size}`);
+    cMembers.setName(`Members 👾 : ${guild.memberCount}`);
+    cBots.setName(`Bots 🎮 : ${guild.members.filter(r => r.user.bot).size}`);
   }, 5000);
 });
 
@@ -1428,9 +1414,9 @@ client.on('message', message => {
 
 client.on('ebnklb',function(ebnklb) {
     
-    if(ebnklb.content.startsWith("<@498473480510111774>")) {
+    if(ebnklb.content.startsWith("@498473480510111774")) {
         ebnklb.channel.send('Hey Im **LEGEND BOT**  A Nice Bot Developed By:`KarZo`')
-        ebnklb.channel.send('My Prefix `Legend`')
+        ebnklb.channel.send('My Prefix `!`')
 
     }
 });
@@ -1519,7 +1505,7 @@ client.on('message', message => {
                                    });
 
 client.on('message', message => {
-  if(message.content.startsWith("#credit <@427855446225846272>","#credits <@427855446225846272>")) {
+  if(message.content.startsWith("#credit @427855446225846272","#credits @427855446225846272")) {
     let role = message.guild.roles.find("name", "Donatour");
     if(!role) {
       return message.channel.send('Thanks for your support. ❤');
