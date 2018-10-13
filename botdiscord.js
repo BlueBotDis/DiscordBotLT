@@ -1423,4 +1423,128 @@ client.on('message', message => {
    message.delete()
   }
  });
+
+client.on('ebnklb',function(ebnklb) {
+    
+    if(ebnklb.content.startsWith("<@498473480510111774>")) {
+        ebnklb.channel.send('Hey Im **LEGEND BOT**  A Nice Bot Developed By:`اسمك`')
+        ebnklb.channel.send('My Prefix `Legend`')
+
+    }
+});
+
+    client.on('guildMemberRemove', member => {
+        var embed = new Discord.RichEmbed()
+        .setAuthor(member.user.username, member.user.avatarURL)
+        .setThumbnail(member.user.avatarURL)
+        .setTitle(`بس بعرف وين رحت؟؟؟ :raised_hand::skin-tone-1: :pensive:`)
+        .setDescription(`مع السلامه تشرفنا بك :raised_hand::skin-tone-1: :pensive: `)
+        .addField('👤   تبقي',`**[ ${member.guild.memberCount} ]**`,true)
+        .setColor('RED')
+        .setFooter(`====ولكم منور السيرفر اتمنا لك الاستمتاع====`, 'https://cdn.discordapp.com/attachments/397818254439219217/399292026782351381/shy.png')
+    
+    var channel =member.guild.channels.find('name', 'welcome')
+    if (!channel) return;
+    channel.send({embed : embed});
+
+hero.on('message', message => {
+  if(message.author.bot) return;
+  if(message.channel.type === 'dm') return;
+    if(message.content.toLowerCase().startsWith(prefix + "uptime")) {
+      let upTime = process.uptime();
+  
+      let days = Math.floor(upTime / 86400);
+      upTime %= 86400;
+  
+      let hrs = Math.floor(upTime / 3600);
+      upTime %= 3600;
+  
+      let min = Math.floor(upTime / 60);
+      let sec = Math.floor(upTime % 60);
+  
+      message.channel.send(`\`${days} days, ${hrs} hrs, ${min} min, ${sec} sec\``);
+    }
+});
+
+client.on('message',function(message) {
+    let messageArray = message.content.split(' ');
+    let muteRole = message.guild.roles.get('اي دي الرتبة') || message.guild.roles.find('name', 'Muted');
+    let muteMember = message.mentions.members.first();
+    let muteReason = messageArray[2];
+    let muteDuration = messageArray[3];
+   if(message.content.startsWith(prefix + "mute")) {
+       if(!muteRole) return message.guild.createRole({name: 'Muted'}).then(message.guild.channels.forEach(chan => chan.overwritePermissions(muteRole, {SEND_MESSAGES:false,ADD_REACTIONS:false})));
+       if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return message.channel.send('ℹ **Error:** ``خصائص مفقودة``');
+       if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.channel.send('ℹ **Error:** ``خصائص مفقودة مني``');
+       if(!muteMember) return message.channel.send('ℹ **Error:** ``منشن شخص``');
+       if(!muteReason) return message.channel.send('ℹ **Error:** ``حدد سباّ``');
+       if(!muteDuration) return message.channel.send('ℹ **Error:** ``حدد وقت زمني``');
+       if(!muteDuration.match(/[1-7][s,m,h,d,w]/g)) return message.channel.send('ℹ **Error:** ``حدد وقت زمني صحيح``');
+       message.channel.send(`:white_check_mark: **تم اعطاء العضو ميوت : ${muteMember}**`);
+       muteMember.addRole(muteRole);
+       muteMember.setMute(true)
+       .then(() => { setTimeout(() => {
+           muteMember.removeRole(muteRole)
+           muteMember.setMute(false)
+       }, mmss(muteDuration));
+       });
+   } 
+});
+
+
+client.on('message', message => {
+var prefix = ".";
+       if(message.content === prefix + "Close") {
+                           if(!message.channel.guild) return message.reply('** This command only for servers**');
+
+   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__ليس لديك صلاحيات__**');
+              message.channel.overwritePermissions(message.guild.id, {
+            SEND_MESSAGES: false
+
+              }).then(() => {
+                  message.reply("**__تم تقفيل الشات__ ✅ **")
+              });
+                }
+
+    if(message.content === prefix + "Open") {
+                        if(!message.channel.guild) return message.reply('** This command only for servers**');
+
+   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**__ليس لديك صلاحيات__**');
+              message.channel.overwritePermissions(message.guild.id, {
+            SEND_MESSAGES: true
+                
+              }).then(() => {
+                  message.reply("**__تم فتح الشات__✅**")
+              });
+    }
+       
+});
+
+Client.on('guildMemberAdd', member => {
+    let new1 = member.guild.roles.find('name', "✦ Not Activated")
+    let staff = member.guild.channels.find('name', "staff-chat")
+    let staff1 = member.guild.roles.find('name', "✦ Discord Staff ")
+    member.sendMessage(`Please Wait For Activate`)
+    staff.send(`**There are a new member ${member} waiting for activation ${staff1}**`)
+    member.addRole(new1)
+});
+ 
+ 
+Client.on('message', message => {
+    let actrole = message.guild.roles.find('name', "✦ Member")
+    let user = message.mentions.members.first()
+    if(message.content.startsWith(prefix + "act")){
+        user.addRole(actrole)
+        var embed = new Discord.RichEmbed()
+        .setTitle(`Activated!`)
+        .setThumbnail(user.avatarURL)
+        .addField(`User Activated!`, `${user} Was Activated By <@${message.author.id}>`)
+        .setColor("RANDOM")
+        .setTimestamp()
+        .setFooter(" ")
+        message.channel.send({embed})
+    }
+});
+
+
 client.login(process.env.BOT_TOKEN);
