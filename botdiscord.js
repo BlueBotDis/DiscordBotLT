@@ -1427,7 +1427,7 @@ client.on('message', message => {
 client.on('ebnklb',function(ebnklb) {
     
     if(ebnklb.content.startsWith("<@498473480510111774>")) {
-        ebnklb.channel.send('Hey Im **LEGEND BOT**  A Nice Bot Developed By:`اسمك`')
+        ebnklb.channel.send('Hey Im **LEGEND BOT**  A Nice Bot Developed By:`KarZo`')
         ebnklb.channel.send('My Prefix `Legend`')
 
     }
@@ -1460,7 +1460,6 @@ client.on('message',function(message) {
 
 
 client.on('message', message => {
-var prefix = ".";
        if(message.content === prefix + "Close") {
                            if(!message.channel.guild) return message.reply('** This command only for servers**');
 
@@ -1487,7 +1486,7 @@ var prefix = ".";
        
 });
 
-Client.on('guildMemberAdd', member => {
+client.on('guildMemberAdd', member => {
     let new1 = member.guild.roles.find('name', "✦ Not Activated")
     let staff = member.guild.channels.find('name', "staff-chat")
     let staff1 = member.guild.roles.find('name', "✦ Discord Staff ")
@@ -1497,7 +1496,7 @@ Client.on('guildMemberAdd', member => {
 });
  
  
-Client.on('message', message => {
+client.on('message', message => {
     let actrole = message.guild.roles.find('name', "✦ Member")
     let user = message.mentions.members.first()
     if(message.content.startsWith(prefix + "act")){
@@ -1512,6 +1511,4 @@ Client.on('message', message => {
         message.channel.send({embed})
     }
 });
-
-
 client.login(process.env.BOT_TOKEN);
