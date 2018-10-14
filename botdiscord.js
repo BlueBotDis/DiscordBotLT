@@ -1238,7 +1238,7 @@ client.on('guildMemberAdd', member => {
                   .addField("Name:",`<@` + `${member.id}` + `>`, true)
                       
                                      .addField(' الـسيرفر', `${member.guild.name}`,true)
-    .addField('مدة انشاء حسابك', member.user.createdAt.toLocaleString(), true);
+    .addField('مدة انشاء حسابك', member.user.createdAt.toLocaleString(), true)
 
                                        
      .setFooter("LGEGND TIME :L")
