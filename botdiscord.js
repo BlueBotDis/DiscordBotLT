@@ -431,7 +431,7 @@ let streaming = [`!𝐡𝐞𝐥𝐩 `, `𝐋𝐞𝐠𝐞𝐧𝐝 𝐁𝐨𝐭 `,
 client.user.setActivity(streaming[Math.floor(Math.random() * streaming.length)], {type: 1, url: "https://twitch.tv/6xlez1"});
 setInterval(() => {
 client.user.setActivity(streaming[Math.floor(Math.random() * streaming.length)], {type: 1, url: "https://twitch.tv/6xlez1"});
-}, 1000);
+}, 5000);
 });
  
  
