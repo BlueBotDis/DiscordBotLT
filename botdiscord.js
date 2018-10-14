@@ -1476,8 +1476,8 @@ client.on('message', message => {
      
                                                         
                                active.on("collect", r => {
-                                   message.member.addRole(message.guild.roles.find("name", "Member"));
-                                   message.member.removeRole(message.guild.roles.find("name", "not active"));
+                                   message.member.addRole(message.guild.roles.find("name", ",👥Member"));
+                                   message.member.removeRole(message.guild.roles.find("name", ",✖️not active"));
                                    msg.delete();
                                    message.channel.send(`**تم تفعيلك استمتع.**`).then(m => m.delete(1000));
      
@@ -1502,7 +1502,7 @@ client.on('message', message => {
 });
 client.on('guildMemberAdd', member => {
 if(member.guild.id === "498078431972556800") {
-let role = member.guild.roles.find(r => r.name === "✖️not active");
+let role = member.guild.roles.find(r => r.name === ",✖️not active");
 member.addRole(role).catch(e => console.log(`Error Detected: ${e.message}`));
 }
 });
