@@ -1521,7 +1521,7 @@ if (message.content.startsWith(adminprefix + 'setgame')) {
   if (message.content.startsWith(adminprefix + 'setname')) {
 client.user.setUsername(argresult).then
     message.channel.sendMessage(`**${argresult}** : تم تغيير أسم البوت إلى`)
-return message.reply("**لا يمكنك تغيير الاسم يجب عليك الانتظآر لمدة ساعتين . **");
+return message.reply("**${argresult}** : تم تغيير أسم البوت إلى **");
 } else
   if (message.content.startsWith(adminprefix + 'setavatar')) {
 client.user.setAvatar(argresult);
