@@ -1506,10 +1506,4 @@ let role = member.guild.roles.find(r => r.name === ",✖️not active");
 member.addRole(role).catch(e => console.log(`Error Detected: ${e.message}`));
 }
 });
-
-client.on('message',async message => {
-if(message.channel.id === "500730362864074772") {
-message.delete().catch(e => {});
-}
-});
 client.login(process.env.BOT_TOKEN);
