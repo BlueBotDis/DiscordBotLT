@@ -1156,7 +1156,7 @@ client.on("guildMemberAdd", (member) => {
 
 
 client.on('ready',async () => {
-  sendReady('499953229082132492', `Now Is Online✊🏼  `);
+  sendReady('499953229082132492', `Im Back Sorry About That :( :LT: `);
   
   function sendReady(channel, message) {
     client.channels.get(channel).send(message);
