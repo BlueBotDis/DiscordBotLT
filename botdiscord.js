@@ -84,7 +84,7 @@ msg.channel.send(`**Bot InviteURL : ** https://discordapp.com/oauth2/authorize?c
 client.on('message', message => {
             if(!message.channel.guild) return;
 let args = message.content.split(' ').slice(1).join(' ');
-if (message.content.startsWith('&bcall')){
+if (message.content.startsWith('!bcall')){
  if (message.author.id !== '427855446225846272') return message.reply('** هذا الأمر قفط لصاحب البوت و شكراًً **')
  if(!message.author.id === '427855446225846272') return;
 message.channel.sendMessage('جار ارسال الرسالة |✅')
@@ -101,8 +101,8 @@ m.sendMessage(args)
  
  client.on('message' , function (message){
       var token = 'NDk4NDczNDgwNTEwMTExNzc0.DqJToA.48AHExpgQkSWxkIb9b-welQGGJ'
-      if(message.content === '!restart') {
-if(message.author.id !== '427855446225846272') return message.reply('**الامر خاص بـ صاحب البوت وشكرا**');
+      if(message.content === '!stopbot') {
+if(message.author.id !== '427855446225846272',`426872212704854016`) return message.reply('**الامر خاص بـ صاحب البوت وشكرا**');
           client.destroy();
           client.login(token) // لا تغيرها
 var time = 7200000;
