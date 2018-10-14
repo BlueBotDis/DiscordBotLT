@@ -427,11 +427,11 @@ client.on('message',async message => {
  
  
 client.on('ready',async () => {
-let streaming = [`${prefix}help💙💚 `, `Legend Bot 💚💙 `, `Bot: 0.5 Beta💚💙` , `LegendTime Team💙💚`];
+let streaming = [`!help `, `𝐋𝐞𝐠𝐞𝐧𝐝 𝐁𝐨𝐭 `, `LegendTime System`];
 client.user.setActivity(streaming[Math.floor(Math.random() * streaming.length)], {type: 1, url: "https://twitch.tv/6xlez1"});
 setInterval(() => {
 client.user.setActivity(streaming[Math.floor(Math.random() * streaming.length)], {type: 1, url: "https://twitch.tv/6xlez1"});
-}, 1500);
+}, 1000);
 });
  
  
