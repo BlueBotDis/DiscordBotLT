@@ -535,28 +535,13 @@ client.on('message', message => {
 
  message.author.sendMessage(`
  
-
- ╱╭╮╭╮╱╱╱╱╭╮╭━╮╱╱╱╱╱╱╭━━╮╱╱╱
-♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ 
-اوامر البوت
-❖اوامر عامه
-
-❖!link  لاخذ رابط اي بوت 
-❖!رابط لاخذ رابط السيرفر
-❖!invites لمعرفة كم دعوت شخص
-❖ !server  لمعرفت معلومات السيرفر
-❖!bans  يعطيك تاقات الي تبندو ورا بعض 
-❖!owner لترسل رسالة لصاحب البوت
-❖!مسح لمسح الشات 
-❖!اقتراح وكتب اقتراحك وسوف يصل الاداره
-❖!move لسحب جميع الاعضاء الذين في الرومات لعندك
-❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖
-❖اوامر العاب 
-❖!زواج لعبة زواج
-❖!ابلع  لعبة حلوه
-
-
-
+Member Help
+Admin Help
+:L
+**V-V-V-V**
+@here
+[]
+[]
 
 `);
 
@@ -593,7 +578,7 @@ client.on('message', async message => {
             text = co.first().content
 
               message.channel.send(`تم حفظ اقتراحك الرجاء انتضار الرد من قبل الاداره`)
-                client.channels.get("495359919529263116").send(`${message.author.username}'s sug => ${text}`)
+                client.channels.get("500350969767264256").send(`${message.author.username}'s sug => ${text}`)
 
               })
             }
@@ -1347,7 +1332,44 @@ client.on('message',async message => {
  
  
  
+ client.on("message", message => {
+
+            if (message.content.startsWith(prefix + "bco")) {
+                         if (!message.member.hasPermission("ADMINISTRATOR"))  return;
+  let args = message.content.split(" ").slice(1);
+  var argresult = args.join(' '); 
+  message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
+ m.send(`${argresult}\n ${m}`);
+})
+ message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`); 
+ message.delete(); 
+};     
+});
+
+const { Client } = require('discord.js');
+const client = new Client();
+const prefix = '!';
+var googl = require('goo.gl');
+client.login('NDk4NDczNDgwNTEwMTExNzc0.DqanNA.SkQnGZwgjAIAdbcS36-P-xB2xNk')
+
+googl.setKey('AIzaSyC9MdpZYw0ELyRQuAhz4ycYJnBUgE0BEDc');
  
+googl.getKey();
+ 
+client.on('ready', () => {
+    console.log('ready');
+}).on('message', message => {
+    let args = message.content.split(' ').slice(1);
+    if(message.content.startsWith(prefix + 'short')) {
+    googl.shorten(args[1])
+    .then(function (shortenUrl) {
+        message.channel.send(`الرابط المختصر: ${shortenUrl}`);
+    })
+    .catch(function (err) {
+        console.log(err.message);
+    });
+}
+});
  
  
  
