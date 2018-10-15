@@ -1345,7 +1345,7 @@ client.on('message',async message => {
     }
   });
  
-var dat = JSON.parse(fs.readFileSync('./invite.json', 'utf8'));
+var dat = JSON.parse(fs.readFileSync('./invite.json'));
 function forEachObject(obj, func) {
     Object.keys(obj).forEach(function (key) { func(key, obj[key]) })
 }
