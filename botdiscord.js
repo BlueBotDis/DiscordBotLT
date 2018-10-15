@@ -535,13 +535,13 @@ client.on('message', message => {
 
  message.author.sendMessage(`
  
-Member Help
-Admin Help
-:L
-**V-V-V-V**
-@here
-[]
-[]
+**╔[════════════════════════════════════]╗**
+            **╔[════════════]╗**
+             :tada: Help:tada: 
+            **╚[════════════]╝**
+Member Help {https://ibb.co/ke5UmL}
+Admin  Help {https://ibb.co/f5gARL}
+**╚[════════════════════════════════════]╝**
 
 `);
 
@@ -578,7 +578,7 @@ client.on('message', async message => {
             text = co.first().content
 
               message.channel.send(`تم حفظ اقتراحك الرجاء انتضار الرد من قبل الاداره`)
-                client.channels.get("500350969767264256").send(`${message.author.username}'s sug => ${text}`)
+                client.channels.get("501527414887677973").send(`${message.author.username}'s sug => ${text}`)
 
               })
             }
@@ -1114,7 +1114,7 @@ message.channel.send(args.join(" "));
 
 
 client.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find('name', '𝐖𝐄𝐋𝐂𝐎𝐌𝐄👋🏼');
+    let channel = member.guild.channels.find('name', 'welcome👋🏼');
     let memberavatar = member.user.avatarURL
       if (!channel) return;
     let embed = new Discord.RichEmbed()
@@ -1222,8 +1222,8 @@ client.on('guildMemberAdd', member => {
  
  client.on('ready',async () => {
   let guild = client.guilds.get("498078431972556800");
-  let cMembers = guild.channels.get("499932604808822784"); // Members
-  let cBots = guild.channels.get("499932679504920586"); // Bots
+  let cMembers = guild.channels.get("501526445206798346"); // Members
+  let cBots = guild.channels.get("501526444732842001"); // Bots
  
   setInterval(() => {
     cMembers.setName(`Members 👾 : ${guild.memberCount}`);
