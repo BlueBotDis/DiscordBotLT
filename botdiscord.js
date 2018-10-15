@@ -1102,12 +1102,10 @@ client.on('message',async message => {
 
 client.on('ready',async () => {
   let guild = client.guilds.get("498078431972556800");
-  let cUsers = guild.channels.get("499932590300463122"); // Users
   let cMembers = guild.channels.get("499932604808822784"); // Members
   let cBots = guild.channels.get("499932679504920586"); // Bots
 
   setInterval(() => {
-    cUsers.setName(`Users 🗿 : ${client.users.size}`);
     cMembers.setName(`Members 👾 : ${guild.memberCount}`);
     cBots.setName(`Bots 🎮 : ${guild.members.filter(r => r.user.bot).size}`);
   }, 5000);
@@ -1156,7 +1154,7 @@ client.on("guildMemberAdd", (member) => {
 
 
 client.on('ready',async () => {
-  sendReady('499953229082132492', `Im Back Sorry About That :( :LT: `);
+  sendReady('499953229082132492', `Im Back Sorry About That :( `);
   
   function sendReady(channel, message) {
     client.channels.get(channel).send(message);
@@ -1390,20 +1388,6 @@ client.on('message', message => {
 
   let args = message.content.split(" ").slice(1);
 
-  if (command == "$say") {
-   message.channel.sendMessage(args.join("  "))
-   message.delete()
-  }
- });
-
-client.on('ebnklb',function(ebnklb) {
-    
-    if(ebnklb.content.startsWith("@498473480510111774")) {
-        ebnklb.channel.send('Hey Im **LEGEND BOT**  A Nice Bot Developed By:`KarZo`')
-        ebnklb.channel.send('My Prefix `!`')
-
-    }
-});
 
 client.on('message',function(message) {
     let messageArray = message.content.split(' ');
@@ -1509,35 +1493,81 @@ member.addRole(role).catch(e => console.log(`Error Detected: ${e.message}`));
 }
 });
 
-const adminprefix = "a!";
-const devs = ['426872212704854016' , '427855446225846272'];
-client.on('message', message => {//for dev
-  var argresult = message.content.split(` `).slice(1).join(' ');
-    if (!devs.includes(message.author.id)) return;
-
-if (message.content.startsWith(adminprefix + 'setgame')) {
-  client.user.setGame(argresult);   message.channel.sendMessage(`**${argresult} تم تغيير بلاينق البوت إلى **`)
-} else
-  if (message.content.startsWith(adminprefix + 'setname')) {
-client.user.setUsername(argresult).then
-    message.channel.sendMessage(`**${argresult}** : تم تغيير أسم البوت إلى`)
-return message.reply("** تم تغيير أسم البوت  **");
-} else
-  if (message.content.startsWith(adminprefix + 'setavatar')) {
-client.user.setAvatar(argresult);
-  message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
-      } else
-client.on('message', message => {//restart
-    if(message.content === adminprefix + "restart") {
-          if (!devs.includes(message.author.id)) return;
-              message.channel.send(`⚠️ **الشخص الذي اعاد تشغيل البوت ${message.author.username}**`);
-            console.log(`⚠️ جاري اعادة تشغيل البوت... ⚠️`);
-            Rocket.destroy();
-            child_process.fork(__dirname + "/bot.js");
-            console.log(`تم اعادة تشغيل البوت`);
-        }
-
-
-    });
+client.on('message', message => {
+    if(message.content.startsWith(prefix + 'new')) {
+        let args = message.content.split(' ').slice(1).join(' ');
+        let support = message.guild.roles.find("name","Support Team");
+        let ticketsStation = message.guild.channels.find("name", "TICKETS");
+        if(!args) {
+            return message.channel.send('Please type a subject for the ticket.');
+        };
+                if(!support) {
+                    return message.channel.send('**Please make sure that `Support Team` role exists and it\'s not duplicated.**');
+                };
+            if(!ticketsStation) {
+                message.guild.createChannel("TICKETS", "category");
+            };
+                message.guild.createChannel(`ticket-${message.author.username}`, "text").then(ticket => {
+                    message.delete()
+                        message.channel.send(`Your ticket has been created. [ ${ticket} ]`);
+                    ticket.setParent(ticketsStation);
+                    ticketsStation.setPosition(1);
+                        ticket.overwritePermissions(message.guild.id, {
+                            SEND_MESSAGES: false,
+                            READ_MESSAGES: false
+                        });
+                            ticket.overwritePermissions(support.id, {
+                                SEND_MESSAGES: true,
+                                READ_MESSAGES: true
+                            });
+                                ticket.overwritePermissions(message.author.id, {
+                                    SEND_MESSAGES: true,
+                                    READ_MESSAGES: true
+                                });
+                    let embed = new Discord.RichEmbed()
+                                .setTitle('**New Ticket.**')
+                                .setColor("RANDOM")
+                                .setThumbnail(`${message.author.avatarURL}`)
+                                .addField('Subject', args)
+                                .addField('Author', message.author)
+                                .addField('Channel', `<#${message.channel.id}>`);
+ 
+                                ticket.sendEmbed(embed);
+                }) .catch();
+    }
+    if(message.content.startsWith(prefix + 'close')) {
+            if(!message.member.hasPermission("ADMINISTRATOR")) return;
+        if(!message.channel.name.startsWith("ticket")) {
+            return;
+        };  
+                let embed = new Discord.RichEmbed()
+                    .setAuthor("Do you really want to close this ticket? Repeat the command to make sure. You have 20 seconds.")
+                    .setColor("RANDOM");
+                    message.channel.sendEmbed(embed) .then(codes => {
+ 
+                   
+                        const filter = msg => msg.content.startsWith(prefix + 'close');
+                        message.channel.awaitMessages(response => response.content === prefix + 'close', {
+                            max: 1,
+                            time: 20000,
+                            errors: ['time']
+                        })
+                        .then((collect) => {
+                            message.channel.delete();
+                        }) .catch(() => {
+                            codes.delete()
+                                .then(message.channel.send('**Operation has been cancelled.**')) .then((c) => {
+                                    c.delete(4000);
+                                })
+                                   
+                           
+                        })
+ 
+ 
+                    })
+ 
+ 
+           
+    }
 });
 client.login(process.env.BOT_TOKEN);
