@@ -539,8 +539,8 @@ client.on('message', message => {
             **╔[════════════]╗**
              :tada: Help:tada: 
             **╚[════════════]╝**
-Member Help {https://ibb.co/ke5UmL}
-Admin  Help {https://ibb.co/f5gARL}
+https://ibb.co/ke5UmL
+https://ibb.co/f5gARL
 **╚[════════════════════════════════════]╝**
 
 `);
