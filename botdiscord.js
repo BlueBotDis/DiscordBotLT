@@ -1239,7 +1239,7 @@ client.on('guildMemberAdd', member => {
 
 
 client.on('message', message => {
-    let log = message.guild.channels.find('name', 'log');
+    let log = message.guild.channels.find('name', 'warns');
     let reason = message.content.split(" ").slice(2).join(' ');
     let p = message.mentions.members.first();
     if(message.content.startsWith(prefix + "warn")){
