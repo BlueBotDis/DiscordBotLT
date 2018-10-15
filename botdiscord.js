@@ -1100,6 +1100,8 @@ client.on('message',async message => {
   }
 });
 
+
+
 client.on('ready',async () => {
   let guild = client.guilds.get("498078431972556800");
   let cMembers = guild.channels.get("499932604808822784"); // Members
@@ -1492,4 +1494,5 @@ let role = member.guild.roles.find(r => r.name === ",✖️not active");
 member.addRole(role).catch(e => console.log(`Error Detected: ${e.message}`));
 }
 });
+
 client.login(process.env.BOT_TOKEN);
