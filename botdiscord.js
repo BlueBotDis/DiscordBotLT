@@ -1346,32 +1346,6 @@ client.on('message',async message => {
 };     
 });
 
-const { Client } = require('discord.js');
-const client = new Client();
-const prefix = '!';
-var googl = require('goo.gl');
-client.login('NDk4NDczNDgwNTEwMTExNzc0.DqanNA.SkQnGZwgjAIAdbcS36-P-xB2xNk')
-
-googl.setKey('AIzaSyC9MdpZYw0ELyRQuAhz4ycYJnBUgE0BEDc');
- 
-googl.getKey();
- 
-client.on('ready', () => {
-    console.log('ready');
-}).on('message', message => {
-    let args = message.content.split(' ').slice(1);
-    if(message.content.startsWith(prefix + 'short')) {
-    googl.shorten(args[1])
-    .then(function (shortenUrl) {
-        message.channel.send(`الرابط المختصر: ${shortenUrl}`);
-    })
-    .catch(function (err) {
-        console.log(err.message);
-    });
-}
-});
- 
- 
  
  
  
