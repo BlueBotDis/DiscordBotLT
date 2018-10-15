@@ -1345,26 +1345,45 @@ client.on('message',async message => {
     }
   });
  
- 
-client.on('ready',async () => {
-  let GUILDID = '498078431972556800'; // اي دي السيرفر
-  let CHANNELID = '501512478392320010'; // اي دي الروم
-  voiceStay(GUILDID, CHANNELID);
-  function voiceStay(guildid, channelid) {
-    if(!guildid) throw new Error('Syntax: voiceStay function requires guildid');
-    if(!channelid) throw new Error('Syntax: voiceStay function requires channelid');
-
-    let guild = client.guilds.get(guildid);
-    let channel = guild.channels.get(channelid);
-
-    if(channel.type === 'voice') {
-      channel.join().catch(e => {
-        console.log(`Failed To Join :: ${e.message}`);
-      });
-    } else {
-      console.log(`Channel Type :: ${channel.type}, It must be Voice.`);
+var dat = JSON.parse(fs.readFileSync('./invite.json', 'utf8'));
+function forEachObject(obj, func) {
+    Object.keys(obj).forEach(function (key) { func(key, obj[key]) })
+}
+client.on("ready", () => {
+    var guild;
+    while (!guild)
+        guild = client.guilds.get("499955125146746890")
+    guild.fetchInvites().then((data) => {
+        data.forEach((Invite, key, map) => {
+            var Inv = Invite.code;
+            dat[Inv] = Invite.uses;
+        })
+    })
+})
+client.on("guildMemberAdd", (member) => {
+    let channel = member.guild.channels.find('name', 'welcome');
+    if (!channel) {
+        console.log("!channel fails");
+        return;
     }
-  }
+    if (member.id == client.user.id) {
+        return;
+    }
+    console.log('made it till here!');
+    var guild;
+    while (!guild)
+        guild = client.guilds.get("499955125146746890")
+    guild.fetchInvites().then((data) => {
+        data.forEach((Invite, key, map) => {
+            var Inv = Invite.code;
+            if (dat[Inv])
+                if (dat[Inv] < Invite.uses) {
+                    console.log(3);
+ channel.send(`${member} Joined By ${Invite.inviter}'s invite ${Invite.code} | invited by ${Invite.inviter}`)
+ }
+            dat[Inv] = Invite.uses;
+        })
+    })
 });
  
  
