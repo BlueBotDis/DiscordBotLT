@@ -111,7 +111,7 @@ client.setInterval(function() {
     client.login(token) // لا تغيرها
   }, time);
 }
-})
+});
  
  
  
@@ -620,7 +620,7 @@ client.on('message', async message => {
  
               })
             }
-          })
+          });
  
  
  
