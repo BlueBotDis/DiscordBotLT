@@ -139,7 +139,9 @@ if (message.channel.guild) {
 if (message.content.startsWith(prefix + `cat`)) {
             const { body } = await snekfetch.get("http://aws.random.cat/meow");
             return message.channel.send({ file: body.file });
-}}});
+}
+}
+});
  
  
  
@@ -276,73 +278,31 @@ if (ReBeLL.content.startsWith(prefix + `8ball`)) {
  
     if (!argsReBeL) return ReBeLL.reply("ask him something.");
     ReBeLL.channel.send(`\:8ball\: | ${ReBeL[randomReBeL]} **${authorReBeL}**`);
-}}});
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- client.on('message', message => {
-if(message.content.startsWith('!مستخدم') ) {
-     if(!message.channel.guild) return message.reply('** This command only for servers **')
-          var args = message.content.split(" ").slice(1);
-    let sent = 0
-    let count = 1;
-   
-      if(args){
-client.users.filter(u => u.discriminator == args[0]).forEach(u => {
-    if(sent > 4){
-     return
-    }
-    sent = sent + 1
-      message.channel.send(`
- 
-      ** ${count}➥ ${u.tag}**
-         
-      `)
-      count++;
-})
+
 }
-}
-if(message.content ===('!مستخدم') ) {
-     if(!message.channel.guild) return message.reply('** This command only for servers **')
-  let sent = 0
-    let count = 1;
-         
- 
-client.users.filter(u => u.discriminator == message.author.discriminator).forEach(u => {
-    if(sent > 4){
-        return
-    }
-    sent = sent + 1
-      message.channel.send(`
- 
-      ** ${count}➥ ${u.tag}**
-         
-      `)
-      count++;
-})
 }
 });
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
  
  
  
