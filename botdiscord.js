@@ -1225,11 +1225,115 @@ client.on('guildMemberAdd', member => {
  
  
  
+ client.on('ready',async () => {
+  let guild = client.guilds.get("498078431972556800");
+  let cMembers = guild.channels.get("499932604808822784"); // Members
+  let cBots = guild.channels.get("499932679504920586"); // Bots
  
+  setInterval(() => {
+    cMembers.setName(`Members 👾 : ${guild.memberCount}`);
+    cBots.setName(`Bots 🎮 : ${guild.members.filter(r => r.user.bot).size}`);
+  }, 5000);
+});
+
+
+
+client.on('message', message => {
+    let log = message.guild.channels.find('name', 'log');
+    let reason = message.content.split(" ").slice(2).join(' ');
+    let p = message.mentions.members.first();
+    if(message.content.startsWith(prefix + "warn")){
+        if(!message.member.hasPermission("ADMINISTRATOR")) return message.reply(`**❌ | This Command is Just for Adminstration**`);
+            message.delete();
+        if(!p) return message.reply(`Mention a User!`);
+        if(reason.length < 1) return message.reply(`Set a reason!`)
+        var embed = new Discord.RichEmbed()
+        .setTitle(`New Warning!`)
+        .addField(`For`, `<@${p.user.id}>`)
+        .addField(`By`, `<@${message.author.id}>`)
+        .addField(`Reason`, reason)
+        .addField(`In Chat`, `<#${message.channel.id}>`)
+        .setColor("WHITE")
+        .setTimestamp()
+        .setFooter(" ")
+            message.channel.send(`${p} ` + reason)
+            message.delete();
+        log.send({embed})
+    }
+});
+
+
+client.on('message', message => {
+    let args = message.content.split(" ").slice(1);
+if (message.content.startsWith(prefix + 'clear')) {
+ let args = message.content.split(" ").slice(1)
+    let messagecount = parseInt(args);
+    if (args > 100) return message.reply("**🛑 || يجب ان يكون عدد المسح أقل من 100 .**").then(messages => messages.delete(5000))
+    if (!messagecount) return message.reply("**💡 || أختر كميه الرسائل المراد مسحها .**").then(messages => messages.delete(5000))
+    message.channel.fetchMessages({limit: messagecount + 1}).then(messages => message.channel.bulkDelete(messages));
+    message.channel.send(`\`${args}\` : __عدد الرسائل التي تم مسحها __ `).then(messages => messages.delete(5000));
+  }
+  });
+
+
+
  
+client.on('message', message => {
+  if (message.author.bot) return;
+  if (!message.content.startsWith(prefix)) return;
+
+  let command = message.content.split(" ")[0];
+  command = command.slice(prefix.length);
+
+  let args = message.content.split(" ").slice(1);
+
+  if (command == "!say") {
+   message.channel.sendMessage(args.join("  "))
+   message.delete()
+  }
+ });
  
- 
- 
+
+client.on('message',async message => {
+    if(message.content.startsWith(prefix + "bc")) {
+      let filter = m => m.author.id === message.author.id;
+      let thisMessage;
+      let thisFalse;
+      message.channel.send('🇧🇨| **ارسل الرسالة الان**').then(msg => {
+
+      let awaitM = message.channel.awaitMessages(filter, {
+        max: 1,
+        time: 20000,
+        errors: ['time']
+      })
+      .then(collected => {
+        collected.first().delete();
+        thisMessage = collected.first().content;
+        msg.edit('🇧🇨| **هل انت متأكد؟**');
+        let awaitY = message.channel.awaitMessages(response => response.content === 'نعم' || 'لا' && filter,{
+          max: 1,
+          time: 20000,
+          errors: ['time']
+        })
+        .then(collected => {
+          if(collected.first().content === 'لا') {
+            msg.delete();
+            message.delete();
+            thisFalse = false;
+          }
+          if(collected.first().content === 'نعم') {
+            if(thisFalse === false) return;
+          message.guild.members.forEach(member => {
+            msg.edit('🇧🇨| **جاري الارسال**');
+            collected.first().delete();
+            member.send(`${thisMessage}\n\n${member} ,\nتم الارسال من : ${message.guild.name}\n تم الارسال بواسطة : ${message.author.tag}`);
+          });
+          }
+        });
+      });
+      });
+    }
+  });
  
  
  
