@@ -1493,4 +1493,4 @@ member.addRole(role).catch(e => console.log(`Error Detected: ${e.message}`));
 }
 });
  
-client.login(process.env.BOT_TOKEN);  
+client.login(process.env.BOT_TOKEN)});
