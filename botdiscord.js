@@ -1211,6 +1211,7 @@ if (message.content.startsWith(prefix + 'clear')) {
 
 client.on('message',async message => {
     if(message.content.startsWith(prefix + "bc")) {
+                         if (!message.member.hasPermission("ADMINISTRATOR"))  return;
       let filter = m => m.author.id === message.author.id;
       let thisMessage;
       let thisFalse;
