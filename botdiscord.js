@@ -265,8 +265,8 @@ client.on('message',async message => {
         time: 20000,
         errors: ['time']
       }).then(collected => {
-        let room = message.guild.channels.find('giveaway', collected.first().content);
-        if(!room) return message.channel.send(':heavy_multiplication_x:| **لم اقدر على ايجاد الروم المطلوب**');
+        let room = message.guild.channels.find('giveaway🎮giveaway', collected.first().content);
+//Here
         room = collected.first().content;
         collected.first().delete();
         msgg.edit(':eight_pointed_black_star:| **اكتب مدة القيف اواي**').then(msg => {
