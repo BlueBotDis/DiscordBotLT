@@ -328,7 +328,7 @@ client.on('message',async message => {
  
  
 client.on('ready',async () => {
-let streaming = [`!𝐡𝐞𝐥𝐩 `, `𝐋𝐞𝐠𝐞𝐧𝐝 𝐁𝐨𝐭 `, `𝐈𝐧 ${client.guilds.size} 𝐒𝐞𝐫𝐯𝐞𝐫𝐬`];
+let streaming = [`!help`, `LegendBot `, `In ${client.guilds.size} Servers`, `SystemBots⚙️`];
 client.user.setActivity(streaming[Math.floor(Math.random() * streaming.length)], {type: 1, url: "https://twitch.tv/6xlez1"});
 setInterval(() => {
 client.user.setActivity(streaming[Math.floor(Math.random() * streaming.length)], {type: 1, url: "https://twitch.tv/6xlez1"});
