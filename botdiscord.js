@@ -1211,7 +1211,7 @@ if (message.content.startsWith(prefix + 'clear')) {
 
 client.on('message',async message => {
     if(message.content.startsWith(prefix + "bc")) {
-                         if (!message.member.hasPermission("ADMINISTRATOR"))  return;
+if(!message.member.hasPermission("ADMINSITRATOR")) return;
       let filter = m => m.author.id === message.author.id;
       let thisMessage;
       let thisFalse;
@@ -1256,7 +1256,7 @@ client.on('message',async message => {
  client.on("message", message => {
 
             if (message.content.startsWith(prefix + "bco")) {
-                         if (!message.member.hasPermission("ADMINISTRATOR"))  return;
+if(!message.member.hasPermission("ADMINSITRATOR")) return;
   let args = message.content.split(" ").slice(1);
   var argresult = args.join(' '); 
   message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
