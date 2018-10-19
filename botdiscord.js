@@ -545,7 +545,30 @@ client.on('message', async message => {
  
  
 
- 
+ client.on('message',async message => {
+  let args = message.content.split(" ").slice(1).join(" ");
+  let role = message.guild.roles.find('name',args) || message.guild.roles.get(args);
+
+
+  if(message.content.startsWith(prefix + "gRole")) {
+    if(!args) return message.reply('اكتب اسم الرتبة');
+    if(!role) return message.reply('هذه الرتبة غير موجودة');
+    let iQp = new Discord.RichEmbed()
+    .setAuthor(message.author.tag,message.author.avatarURL)
+    .setTitle(message.guild.name)
+    .setThumbnail(message.guild.iconURL)
+    .addField('- اسم الرتبة',role.name,true)
+    .addField('- اي دي الرتبة',role.id,true)
+    .addField('- تم انشاء الرتبة',role.createdAt.toLocaleString(),true)
+    .addField('- لون الرتبة',role.hexColor,true)
+    .addField('- عدد الاعضاء الذي لديهم نفس الرتبة',role.members.size,true)
+    .addField('- مركز الرتبة بين كل الرتب',role.position,true)
+    .addField('- خصائص الرتبة',role.permissions,true)
+    .setFooter(message.author.tag,message.author.avatarURL);
+
+    message.channel.send(iQp);
+  }
+});
  
  
  
@@ -1234,49 +1257,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__
 });
  
  
- 
- client.on("message", message => {
-        if(!message.channel.guild) return;
-    if(message.content.startsWith(prefix + "maintenance")) {
-        if(!message.member.hasPermission("ADMINISTRATOR")) return;
-        let mutedc = message.guild.roles.find(n => n.name === 'Muted');
-            message.guild.channels.forEach(codes => {
-                codes.overwritePermissions(message.guild.id, {
-                    SEND_MESSAGES: false,
-                    READ_MESSAGES: false
-                });
-                codes.overwritePermissions(mutedc.id, {
-                    READ_MESSAGES: false
-                });                         
-            });
-    }
-});
 
-const arraySort = require('array-sort'),
-table = require('table');
-
-client.on('message' , async (message) => {
-
-    if(message.content.startsWith(prefix + "topinvite")) {
-
-  let invites = await message.guild.fetchInvites();
-
-    invites = invites.array();
-
-    arraySort(invites, 'uses', { reverse: true });
-
-    let possibleInvites = [['الدعوات', 'الاشخاص']];
-    invites.forEach(i => {
-      possibleInvites.push([i.inviter.username , i.uses]);
-    })
-    const embed = new Discord.RichEmbed()
-    .setColor(0x7289da)
-    .setTitle("دعوات السيرفر")
-    .addField(' المتصدرين' , `${table.table(possibleInvites)}`)
-
-    message.channel.send(embed)
-    }
-});
 
 client.on('message',function(message) {
     let messageArray = message.content.split(' ');
