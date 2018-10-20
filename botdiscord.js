@@ -1088,7 +1088,7 @@ client.on('guildMemberAdd', member => {
  client.on('message', message => {
     if(message.content.startsWith(prefix + 'new')) {
         let args = message.content.split(' ').slice(1).join(' ');
-        let support = message.guild.roles.find("name","Support Team");
+        let support = message.guild.roles.find("name",",Support Team");
         let ticketsStation = message.guild.channels.find("name", "TICKETS");
         if(!args) {
             return message.channel.send('Please type a subject for the ticket.');
