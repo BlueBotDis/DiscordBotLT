@@ -1261,7 +1261,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__
 
 client.on('message',function(message) {
     let messageArray = message.content.split(' ');
-    let muteRole = message.guild.roles.get('500696632812371978') || message.guild.roles.find('name', 'Muted');
+    let muteRole = message.guild.roles.get('503250783559745547') || message.guild.roles.find('name', 'Muted');
     let muteMember = message.mentions.members.first();
     let muteReason = messageArray[2];
     let muteDuration = messageArray[3];
