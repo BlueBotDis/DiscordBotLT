@@ -1233,7 +1233,8 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__
             msg.edit('🇧🇨| **جاري الارسال**');
             collected.first().delete();
             member.send(`📢BroadCast📢
-${thisMessage}\n\n${member} ,\nتم الارسال من : ${message.guild.name}\n تم الارسال بواسطة : ${message.author.tag}`);
+${thisMessage}
+ليجند تايم يحبكم`);
           });
           }
         });
