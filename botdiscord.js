@@ -1185,6 +1185,7 @@ client.on('guildMemberAdd', member => {
 client.on('message', message => {
     let args = message.content.split(" ").slice(1);
 if (message.content.startsWith(prefix + 'clear')) {
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__ليس لديك صلاحيات__**');
  let args = message.content.split(" ").slice(1)
     let messagecount = parseInt(args);
     if (args > 100) return message.reply("**🛑 || يجب ان يكون عدد المسح أقل من 100 .**").then(messages => messages.delete(5000))
@@ -1231,7 +1232,8 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__
           message.guild.members.forEach(member => {
             msg.edit('🇧🇨| **جاري الارسال**');
             collected.first().delete();
-            member.send(`${thisMessage}\n\n${member} ,\nتم الارسال من : ${message.guild.name}\n تم الارسال بواسطة : ${message.author.tag}`);
+            member.send(`📢BroadCast📢
+${thisMessage}\n\n${member} ,\nتم الارسال من : ${message.guild.name}\n تم الارسال بواسطة : ${message.author.tag}`);
           });
           }
         });
