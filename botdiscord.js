@@ -1201,7 +1201,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__
 
 client.on('message',async message => {
     if(message.content.startsWith(prefix + "bc")) {
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__ليس لديك صلاحيات__**');
+if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply(' **__ليس لديك صلاحيات__**');
       let filter = m => m.author.id === message.author.id;
       let thisMessage;
       let thisFalse;
@@ -1248,7 +1248,7 @@ ${thisMessage}
  client.on("message", message => {
 
             if (message.content.startsWith(prefix + "bco")) {
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__ليس لديك صلاحيات__**');
+if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply(' **__ليس لديك صلاحيات__**');
   let args = message.content.split(" ").slice(1);
   var argresult = args.join(' '); 
   message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
@@ -1273,8 +1273,15 @@ module.exports.help = {
   name: "say"
 }
 
- 
- 
+  client.on("message", message => {
+            if (message.content.startsWith(prefix + "mute")) {
+if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply(' **__ليس لديك صلاحيات__**');
+  let mute_role = msg.guild.roles.find("name", "Mute");
+  let member = msg.mentions.members.first();
+  member.addRole(mute_role); // <- this assign the role
+  setTimeout(() => {member.removeRole(mute_role);}, 60 * 1000); // <- sets a timeout to unmute the user.
+};     
+});
  
  
  
