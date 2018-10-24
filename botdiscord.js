@@ -692,11 +692,11 @@ client.on('message',function(message) {
  const embed = new Discord.RichEmbed()
 
     .setDescription(`**Members info ✨
-💚 onlin{message.guild.members.filter(m=>m.presence.status == 'online').size}
-❤  dnd:       ${message.guild.members.filter(m=>m.presence.status == 'dnd').size}
-💛  idle:     ${message.guild.members.filter(m=>m.presence.status == 'idle').size}
-💠   membersCount:  ${message.guild.memberCount - message.guild.members.filter(m=>m.user.bot).size}
-💡 bots: ${message.guild.members.filter(m=>m.user.bot).size} **`)
+:ON: Online :  ${message.guild.members.filter(m=>m.presence.status == 'online').size}
+:dn: dnd   :  ${message.guild.members.filter(m=>m.presence.status == 'dnd').size}
+:ie: idle  :  ${message.guild.members.filter(m=>m.presence.status == 'idle').size}
+ 🚹 Members:  ${message.guild.memberCount - message.guild.members.filter(m=>m.user.bot).size}
+ 🤖 Bots  :  ${message.guild.members.filter(m=>m.user.bot).size} **`)
          message.channel.send({embed});
 
     }
