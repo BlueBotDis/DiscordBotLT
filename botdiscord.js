@@ -1276,7 +1276,6 @@ module.exports.help = {
   client.on("message", message => {
             if (message.content.startsWith(prefix + "mute")) {
 if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply(' **__ليس لديك صلاحيات__**');
-  let mute_role = msg.guild.roles.find("name", "Mute");
   let member = msg.mentions.members.first();
   member.addRole(mute_role); // <- this assign the role
   setTimeout(() => {member.removeRole(mute_role);}, 60 * 1000); // <- sets a timeout to unmute the user.
