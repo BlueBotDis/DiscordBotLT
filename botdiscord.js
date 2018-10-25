@@ -1234,7 +1234,7 @@ if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply(' **__ل
             collected.first().delete();
             member.send(`📢BroadCast📢
 ${thisMessage}
-${m}`);
+Hello There`);
           });
           }
         });
