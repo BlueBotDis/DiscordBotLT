@@ -37,8 +37,7 @@ client.on('ready', () => {
     )
   message.channel.send("**تم ارسال الرابط **")
 
-message.author.send(`**مدة الرابط : يـوم
-عدد استخدامات الرابط : 2**`)
+message.author.send(`**مدة الرابط : يـوم**`)
 
 
     }
@@ -431,17 +430,6 @@ let channel = client.channels.get('495359919529263116')
 if(member.user.bot) {
 channel.send(`${member} ولكم يا عمو البوت`)
 }
-})
- 
- 
- client.on('typingStart', (ch, user) => {
-    if(user.presence.status === 'offline') {
-        
-        ch.send(`${user} هاهاهاا , كشفتك وانت تكتب ي اوف لاين`)
-        .then(msg => {
-            msg.delete(10000)
-        })
-    }
 })
  
 
