@@ -1335,7 +1335,7 @@ client.on('message', message => {
       .setColor('RANDOM')
       .addField('- قائمة السيرفرات التي تملك فوق المئة عضو', sg || "0")
       .addField('- قائمة السيرفرات التي تملك اقل من مئة عضو', gl || "0")
-      .setFooter(Guilds: ${client.guilds.size}, Users: ${client.users.size}, Channels: ${client.channels.size}.)
+      .setFooter(`Guilds: ${client.guilds.size}, Users: ${client.users.size}, Channels: ${client.channels.size}`)
       message.channel.send(gm);
     }
 });
