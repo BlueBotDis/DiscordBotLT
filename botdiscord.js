@@ -1239,9 +1239,10 @@ if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply(' **__ل
           message.guild.members.forEach(member => {
             msg.edit('🇧🇨| **جاري الارسال**');
             collected.first().delete();
-            member.send(`📢BroadCast📢
-${thisMessage}
-Hello There`);
+            member.send(`💌📢BroadCast📢💌
+
+
+${thisMessage}`);
           });
           }
         });
