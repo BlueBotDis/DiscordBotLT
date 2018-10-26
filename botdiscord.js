@@ -1325,7 +1325,21 @@ if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply(' **__ل
 }
 });
 
- 
+client.on('message', message => {
+  if(message.author.bot) return;
+    if(message.content === prefix + 'gm') {
+      var sg = client.guilds.filter(o => o.memberCount > 100).map(e => e.name).join('\n')
+      var gl = client.guilds.filter(g => g.memberCount < 100).map(n => n.name).join('\n')
+      var gm = new Discord.RichEmbed()
+      .setDescription('- **قائمة اعضاء السيرفرات**')
+      .setColor('RANDOM')
+      .addField('- **قائمة السيرفرات التي تملك فوق المئة عضو**', sg)
+      .addField('- **قائمة السيرفرات التي تملك اقل من مئة عضو**', gl)
+      .setFooter(`Guilds: ${client.guilds.size}, Users: ${client.users.size}, Channels: ${client.channels.size}.`)
+      message.channel.send(gm);
+    }
+});
+
  
  
  
