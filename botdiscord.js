@@ -26,7 +26,7 @@ client.on('ready', () => {
 
 
  client.on('message', message => {
-    if (message.content.startsWith("!رابط")) {
+    if (message.content.startsWith("!linkdm")) {
 
   message.channel.createInvite({
         thing: true,
@@ -77,7 +77,7 @@ if (msg.content.startsWith(prefix + 'cal')) {
  
 
 client.on('message', msg => {
-    if(msg.content.startsWith('!link')) {
+    if(msg.content.startsWith('!linkb')) {
     if(msg.channel.type === 'dm') return;
 const user = msg.mentions.users.first();
 if(!user) return msg.channel.send('``' + '**قم بتحديد بوت**' + '``')
@@ -258,13 +258,13 @@ client.on('message',async message => {
   if(message.content.startsWith(prefix + "giveaway")) {
      //return message.channel.send(':heavy_multiplication_x:| **هذا الامر معطل حاليا.. ``حاول في وقت لاحق``**');
     if(!message.guild.member(message.author).hasPermission('MANAGE_GUILD')) return message.channel.send(':heavy_multiplication_x:| **يجب أن يكون لديك خاصية التعديل على السيرفر**');
-    message.channel.send(`:eight_pointed_black_star:| **أكتب giveaway🎮 **`).then(msgg => {
+    message.channel.send(`:eight_pointed_black_star:| **أكتب •🎉giveaway»قيفاواي **`).then(msgg => {
       message.channel.awaitMessages(filter, {
         max: 1,
         time: 20000,
         errors: ['time']
       }).then(collected => {
-        let room = message.guild.channels.find('giveaway🎮giveaway', collected.first().content);
+        let room = message.guild.channels.find('•🎉giveaway»قيفاواي', collected.first().content);
 //Here
         room = collected.first().content;
         collected.first().delete();
@@ -327,7 +327,7 @@ client.on('message',async message => {
  
  
 client.on('ready',async () => {
-let streaming = [`!help`, `LegendBot `, `In ${client.guilds.size} Servers`, `SystemBots⚙️`];
+let streaming = [`LegendGang `, `${guild.memberCount} Members`, `SystemBots⚙️`];
 client.user.setActivity(streaming[Math.floor(Math.random() * streaming.length)], {type: 1, url: "https://twitch.tv/6xlez1"});
 setInterval(() => {
 client.user.setActivity(streaming[Math.floor(Math.random() * streaming.length)], {type: 1, url: "https://twitch.tv/6xlez1"});
@@ -543,6 +543,22 @@ client.on('message', async message => {
 
               message.channel.send(`تم حفظ اقتراحك الرجاء انتضار الرد من قبل الاداره`)
                 client.channels.get("501832707764912138").send(`${message.author.username}'s sug => ${text}`)
+
+              })
+            }
+          }) 
+
+client.on('message', async message => {
+  if(message.content.startsWith(prefix + "sub")) {
+  await  message.channel.send(`اكتب الرتبة التي ستقدم لها`)
+    let filter = m => m.author.id === message.author.id
+      var text = '';
+        let sugsa = message.channel.awaitMessages(filter, { max: 1, time: 60000})
+          .then(co => {
+            text = co.first().content
+
+              message.channel.send(`تم حفظ تقديمك الرجاء انتضار الرد من قبل الاداره`)
+                client.channels.get("508053414165348355").send(`${message.author.username}'s sug => ${text}`)
 
               })
             }
@@ -989,41 +1005,11 @@ client.on('message',  message => {
  
 
 client.on('guildMemberAdd', member => {
-if(member.guild.id === "498078431972556800") {
-let role = member.guild.roles.find(r => r.name === ",✖️not active");
+if(member.guild.id === "500704354471378969") {
+let role = member.guild.roles.find(r => r.name === "•👥Member👥•");
 member.addRole(role).catch(e => console.log(`Error Detected: ${e.message}`));
 }
 });
-
-
-client.on('message', message => {                      
-    if(!message.channel.guild) return;
-       if(message.content.startsWith(prefix + 'active')) {
-        let modlog = client.channels.find('name', 'active-cmd');
-       if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
-       message.channel.sendMessage(`اضغط على (✅) عشان تتفعل`).then(msg => {
-       
-       
-        msg.react('✅')
-       .then(() => msg.react('✅'))
-     
-     
- 
-       let activeFilter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
-     
-       let active = msg.createReactionCollector(activeFilter, { time: 15000 });
-     
-                                                       
-                               active.on("collect", r => {
-                                   message.member.addRole(message.guild.roles.find("name", ",👥Member"));
-                                   message.member.removeRole(message.guild.roles.find("name", ",✖️not active"));
-                                   msg.delete();
-                                   message.channel.send(`**تم تفعيلك استمتع.**`).then(m => m.delete(1000));
-     
-                                   })
-                                   })
-                                   }
-                                   });
 
 
 client.on('message', message => {
@@ -1067,29 +1053,25 @@ message.channel.send(args.join(" "));
 
 
 client.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find('name', 'welcome🤙');
+    let channel = member.guild.channels.find('name', '•🌷welcome»الترحيب');
     let memberavatar = member.user.avatarURL
       if (!channel) return;
     let embed = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setThumbnail(memberavatar)
-        .addField('🎽 | name :  ',`${member}`)
-        .addField('📢 | نورت السيرفر ي قلبي' , `Welcome to the server, ${member}`)
-        .addField('🆔 | user :', "**[" + `${member.id}` + "]**" )
-                .addField('➡| انت العضو رقم',`${member.guild.memberCount}`)
-               
-                  .addField("Name:",`<@` + `${member.id}` + `>`, true)
-                     
-                                     .addField(' الـسيرفر', `${member.guild.name}`,true)
-    .addField('مدة انشاء حسابك', member.user.createdAt.toLocaleString(), true)
+        .addField('•🔰|Name» الإسم',`${member}`)
+        .addField('•🌹|Welcome » نورت السيرفر' , `Welcome to the server, ${member}`)
+        .addField('•🆔| User » اي دي العضو', "**[" + `${member.id}` + "]**" )
+                .addField('➡| انت العضو رقم',`${member.guild.memberCount}`)                     
+                                     .addField('•🔮|Server Name » اسم السيرفر', `${member.guild.name}`,true)
+    .addField('•🕣|Time Create » مدة انشاء حسابك', member.user.createdAt.toLocaleString(), true)
  
                                        
-     .setFooter("LGEGND TIME :L")
+     .setFooter("${member.guild.name}")
         .setTimestamp()
    
       channel.sendEmbed(embed);
     });
-
 
 
  client.on('message', message => {
@@ -1104,7 +1086,7 @@ client.on('guildMemberAdd', member => {
                     return message.channel.send('**Please make sure that `Support Team` role exists and it\'s not duplicated.**');
                 };
             if(!ticketsStation) {
-                message.guild.createChannel("TICKETS", "category");
+                message.guild.createChannel("TICKETS || التذاكر", "category");
             };
                 message.guild.createChannel(`ticket-${message.author.username}`, "text").then(ticket => {
                     message.delete()
@@ -1201,85 +1183,6 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__
     message.channel.send(`\`${args}\` : __عدد الرسائل التي تم مسحها __ `).then(messages => messages.delete(5000));
   }
   });
-
-
-
- 
-
-client.on('message',async message => {
-    if(message.content.startsWith(prefix + "bc")) {
-if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply(' **__ليس لديك صلاحيات__**');
-      let filter = m => m.author.id === message.author.id;
-      let thisMessage;
-      let thisFalse;
-      message.channel.send('🇧🇨| **ارسل الرسالة الان**').then(msg => {
-
-      let awaitM = message.channel.awaitMessages(filter, {
-        max: 1,
-        time: 20000,
-        errors: ['time']
-      })
-      .then(collected => {
-        collected.first().delete();
-        thisMessage = collected.first().content;
-        msg.edit('🇧🇨| **هل انت متأكد؟**');
-        let awaitY = message.channel.awaitMessages(response => response.content === 'نعم' || 'لا' && filter,{
-          max: 1,
-          time: 20000,
-          errors: ['time']
-        })
-        .then(collected => {
-          if(collected.first().content === 'لا') {
-            msg.delete();
-            message.delete();
-            thisFalse = false;
-          }
-          if(collected.first().content === 'نعم') {
-            if(thisFalse === false) return;
-          message.guild.members.forEach(member => {
-            msg.edit('🇧🇨| **جاري الارسال**');
-            collected.first().delete();
-            member.send(`💌📢BroadCast📢💌
-
-
-${thisMessage}`);
-          });
-          }
-        });
-      });
-      });
-    }
-  });
- 
- 
- 
- client.on("message", message => {
-
-            if (message.content.startsWith(prefix + "bco")) {
-if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply(' **__ليس لديك صلاحيات__**');
-  let args = message.content.split(" ").slice(1);
-  var argresult = args.join(' '); 
-  message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
- m.send(`${argresult}\n ${m}`);
-})
- message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`); 
- message.delete(); 
-};     
-});
- 
-
-module.exports.run = async (bot, message, args) => {
-
-      if(!message.member.hasPermission("ADMINISTRATOR")) return;
-      const sayMessage = args.join(" ");
-      message.delete().catch();
-      message.channel.send(sayMessage);
-
-}
-
-module.exports.help = {
-  name: "say"
-}
 
   client.on("message", message => {
             if (message.content.startsWith(prefix + "mute")) {
