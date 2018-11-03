@@ -319,31 +319,15 @@ client.on('message',async message => {
     });
   }
 });
- 
- 
- 
- 
- 
- 
- 
+
 client.on('ready',async () => {
-let streaming = [`LegendGang `, `${guild.memberCount} Members`, `SystemBots⚙️`];
+let streaming = [`LegendGang`, `System`];
 client.user.setActivity(streaming[Math.floor(Math.random() * streaming.length)], {type: 1, url: "https://twitch.tv/6xlez1"});
 setInterval(() => {
 client.user.setActivity(streaming[Math.floor(Math.random() * streaming.length)], {type: 1, url: "https://twitch.tv/6xlez1"});
 }, 5000);
 });
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
 client.on("message", message => {
     var prefix = "!"; // غير هنا حط البرفكس
  
