@@ -959,7 +959,7 @@ client.on('message',  message => {
  
 
 client.on('guildMemberAdd', member => {
-if(member.guild.id === "500704354471378969") {
+if(member.guild.id === "498078431972556800") {
 let role = member.guild.roles.find(r => r.name === "•👥Member👥•");
 member.addRole(role).catch(e => console.log(`Error Detected: ${e.message}`));
 }
